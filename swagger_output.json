@@ -5,7 +5,7 @@
     "description": "A simple CRUD web services API for a banking application",
     "version": "1.0.0"
   },
-  "host": "cse341-w03-project.onrender.com",
+  "host": "cse341-project-ctd6.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"

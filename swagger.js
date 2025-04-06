@@ -6,7 +6,7 @@ const doc = {
         "description": "A simple CRUD web services for managing customers' accounts and transactions",
         "version": "1.0.0",
     },
-    host: "cse341-w03-project.onrender.com",
+    host: "cse341-project-ctd6.onrender.com",
     schemes: ["https"]
 };
 
