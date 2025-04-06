@@ -506,7 +506,7 @@
     },
     "/accounts/": {
       "get": {
-        "description": "",
+        "description": "GET ALL accounts API",
         "produces": [
           "application/json"
         ],
@@ -520,7 +520,10 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "POST or CREATE an account API",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
@@ -530,15 +533,40 @@
             "in": "body",
             "schema": {
               "type": "object",
+              "required": [
+                "account_id",
+                "limit",
+                "products"
+              ],
               "properties": {
                 "account_id": {
-                  "example": "any"
+                  "type": "integer",
+                  "description": "Unique account ID",
+                  "example": 898989
                 },
                 "limit": {
-                  "example": "any"
+                  "type": "integer",
+                  "minimum": 9000,
+                  "description": "Credit limit for the account",
+                  "example": 9000
                 },
                 "products": {
-                  "example": "any"
+                  "type": "array",
+                  "minItems": 1,
+                  "description": "List of products associated with the account.",
+                  "items": {
+                    "type": "string",
+                    "description": "Product name.",
+                    "example": "CurrencyService"
+                  },
+                  "example": [
+                    "Brokerage",
+                    "CurrencyService",
+                    "Derivatives",
+                    "InvestmentFund",
+                    "Commodity",
+                    "InvestmentStock"
+                  ]
                 }
               }
             }
@@ -559,7 +587,7 @@
     },
     "/accounts/{id}": {
       "get": {
-        "description": "",
+        "description": "GET an account API",
         "produces": [
           "application/json"
         ],
@@ -587,7 +615,10 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "PUT or UPDATE an account API",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
@@ -597,6 +628,44 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "account_id": {
+                  "type": "integer",
+                  "description": "Unique account ID",
+                  "example": 898989
+                },
+                "limit": {
+                  "type": "integer",
+                  "minimum": 9000,
+                  "description": "Credit limit for the account",
+                  "example": 9000
+                },
+                "products": {
+                  "type": "array",
+                  "minItems": 1,
+                  "description": "List of products associated with the account.",
+                  "items": {
+                    "type": "string",
+                    "description": "Product name.",
+                    "example": "CurrencyService"
+                  },
+                  "example": [
+                    "Brokerage",
+                    "CurrencyService",
+                    "Derivatives",
+                    "InvestmentFund",
+                    "Commodity",
+                    "InvestmentStock"
+                  ]
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -615,7 +684,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "DELETE an account API",
         "produces": [
           "application/json"
         ],
@@ -645,7 +714,7 @@
     },
     "/customers/": {
       "get": {
-        "description": "",
+        "description": "GET ALL customers API",
         "produces": [
           "application/json"
         ],
@@ -659,7 +728,10 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "POST or CREATE a customer API",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
@@ -669,27 +741,100 @@
             "in": "body",
             "schema": {
               "type": "object",
+              "required": [
+                "username",
+                "name",
+                "address",
+                "birthdate",
+                "email",
+                "accounts",
+                "tier_and_details"
+              ],
               "properties": {
                 "username": {
-                  "example": "any"
+                  "type": "string",
+                  "description": "Unique customer username",
+                  "example": "blessedmagnificient"
                 },
                 "name": {
-                  "example": "any"
+                  "type": "string",
+                  "description": "Full name of customer",
+                  "example": "Blessed Magnificient"
                 },
                 "address": {
-                  "example": "any"
+                  "type": "string",
+                  "description": "Customer's address",
+                  "example": "1 Oak Close, Ashbridge, OH 10232"
                 },
                 "birthdate": {
-                  "example": "any"
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Customer's birthdate in ISO 8601 format",
+                  "example": "1998-10-13T17:14:27.000Z"
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "format": "email",
+                  "description": "Customer's email address",
+                  "example": "blessed@example.com"
                 },
                 "accounts": {
-                  "example": "any"
+                  "type": "array",
+                  "minItems": 1,
+                  "description": "List of account IDs associated with customer",
+                  "items": {
+                    "type": "integer",
+                    "example": 898989
+                  },
+                  "example": [898989]
                 },
                 "tier_and_details": {
-                  "example": "any"
+                  "type": "object",
+                  "description": "Membership tiers and benefits for customer",
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "tier": {
+                        "type": "string",
+                        "enum": ["Bronze", "Silver", "Gold", "Platinum"],
+                        "description": "Customer's membership tier",
+                        "example": "Platinum"
+                      },
+                      "benefits": {
+                        "type": "array",
+                        "minItems": 1,
+                        "description": "List of benefits available in this tier",
+                        "items": {
+                          "type": "string",
+                          "example": "dedicated accont representative"
+                        },
+                        "example": [
+                          "airline lounge access"
+                        ]
+                      },
+                      "active": {
+                        "type": "boolean",
+                        "description": "Indicates if membership tier is still active",
+                        "example": true
+                      },
+                      "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the tier entry",
+                        "example": "69f8b6a3c39c42edb540499ee2651b75"
+                      }
+                    }
+                  },
+                  "example": {
+                    "69f8b6a3c39c42edb540499ee2651b75": {
+                      "tier": "Bronze",
+                      "benefits": [
+                        "dedicated account representative",
+                        "airline lounge access"
+                      ],
+                      "active": true,
+                      "id": "69f8b6a3c39c42edb540499ee2651b75"
+                    }
+                  }
                 }
               }
             }
@@ -710,7 +855,7 @@
     },
     "/customers/{id}": {
       "get": {
-        "description": "",
+        "description": "GET a customer API",
         "produces": [
           "application/json"
         ],
@@ -738,7 +883,10 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "PUT or UPDATE a customer API",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
@@ -748,6 +896,100 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "description": "Unique customer username",
+                  "example": "blessedmagnificient"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Full name of customer",
+                  "example": "Blessed Magnificient"
+                },
+                "address": {
+                  "type": "string",
+                  "description": "Customer's address",
+                  "example": "1 Oak Close, Ashbridge, OH 10232"
+                },
+                "birthdate": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Customer's birthdate in ISO 8601 format",
+                  "example": "1998-10-13T17:14:27.000Z"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "description": "Customer's email address",
+                  "example": "blessed@example.com"
+                },
+                "accounts": {
+                  "type": "array",
+                  "minItems": 1,
+                  "description": "List of account IDs associated with customer",
+                  "items": {
+                    "type": "integer",
+                    "example": 898989
+                  },
+                  "example": [898989]
+                },
+                "tier_and_details": {
+                  "type": "object",
+                  "description": "Membership tiers and benefits for customer",
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "tier": {
+                        "type": "string",
+                        "enum": ["Bronze", "Silver", "Gold", "Platinum"],
+                        "description": "Customer's membership tier",
+                        "example": "Platinum"
+                      },
+                      "benefits": {
+                        "type": "array",
+                        "minItems": 1,
+                        "description": "List of benefits available in this tier",
+                        "items": {
+                          "type": "string",
+                          "example": "dedicated accont representative"
+                        },
+                        "example": [
+                          "airline lounge access"
+                        ]
+                      },
+                      "active": {
+                        "type": "boolean",
+                        "description": "Indicates if membership tier is still active",
+                        "example": true
+                      },
+                      "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the tier entry",
+                        "example": "69f8b6a3c39c42edb540499ee2651b75"
+                      }
+                    }
+                  },
+                  "example": {
+                    "69f8b6a3c39c42edb540499ee2651b75": {
+                      "tier": "Bronze",
+                      "benefits": [
+                        "dedicated account representative",
+                        "airline lounge access"
+                      ],
+                      "active": true,
+                      "id": "69f8b6a3c39c42edb540499ee2651b75"
+                    }
+                  }
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -766,7 +1008,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "DELETE a customer API",
         "produces": [
           "application/json"
         ],
