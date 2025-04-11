@@ -5,7 +5,7 @@ const { ObjectId } = require("mongodb");
 
 const getAll = async (req, res) => {
     try {
-        const result = await mongodb.getDatabase().db(process.env.DB_NAME).collection(process.env.TRANSACTION_COLLECTION).find().limit(100);
+        const result = await mongodb.getDatabase().db(process.env.DB_NAME).collection(process.env.TRANSACTION_COLLECTION).find().limit(50);
         const transactions = await result.toArray();
 
         res.setHeader("Content-Type", "application/json");
