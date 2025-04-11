@@ -1,3 +1,5 @@
 node_modules/
 .env
 swagger_output_old.json
+coverage/
+gateway/
