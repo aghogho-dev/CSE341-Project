@@ -1,0 +1,195 @@
+GET https://cse341-project-ctd6.onrender.com/
+###
+
+GET https://cse341-project-ctd6.onrender.com/ 
+Cookie: appSession=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaWF0IjoxNzQ0Nzk1ODg4LCJ1YXQiOjE3NDQ3OTU4ODgsImV4cCI6MTc0NDg4MjI4OH0..gtnbeVJY2bBqwm9r.YBViZYnCv0aDUJXnJQAfEoaa_M0Uaa7gK03hbh5GMT7991g6yvGcQa62fjTKR9uciUXdpMmoRE6Q_qWXLu63wINMUHGDV6pd2xz3YZWnjPT6UztJDzZJK-OZqQSSLdpYza8BFCFB6s-Bo9O8I8R3WKp3XpMANzSJyrUuY-xWerHckC8zEg_uWFhsNfEk4MUCr7YX1wgg2X_jl98w0usYBtQfaAegmFqHTIM8nDYneB5ynDR1LDIZfwqIMKW1lJPXo06h5WfAXi2Pwoc9TKJLW3G0d8jOpBHzCcjUJowTkPG9_TDoQMlCk4L_fzyCqlP2D3NwnBcTKjXlHyXvSG4Em4QQz4CXrvIULFMbLQ6j2NGSrBL1SrD3G1DZ5iHADzqy1SJ6lmKdQ27rF9A_lx9GHCb7M5_k2yzVWBDCnO7tDmLMKwNfOHvd0ABaX21UkaaBEBWPINpw5g2J-KfQ-jPSB4EJ5zbiPiVwYJF2ESh5C1nnLGu4lhDQneTV04Z5NnLsF804E9MFvdqd5QNKDliJ87XO-Trb3-70gVK_g1sAJJU2RtO00o3FptDr9a3rTcAIvGf3Z51nTB6j6QcFlRoaDSmfrC_y04PaE0CubHd1pgGpP9kPPIiuFMdYeRIZz3H9WDP7KSNKFy1eHLa8Dycjb1bn03IiByH4cYI2Gmg0T9wEOtH-Xlk9d1H9yv4AAcu-MubGglTCi7BNkUokRKI2yTgt07cvsqNZA1fWToiZYXQ0naPT1M9-iLVPCaM5CbzjqCXmMYFdIkPN7UiQuk8oyWlhrlFcPuTbiYOlstxX0gAWFx_iI1L4S-8kMPLStgHijrNSRU4bnme9Flbda70Nk6hPqewEH1KyibIvB_VTlmTHsV7yS8KPUlt2OVXmwpBDIgckMXomV8ZNSCbAtL1hOQgzpaAH2utsVbyCxxmRByB6DyW1PbxxJ5faargDnM9lb1rwY2yApKzMBYbkFiQBG-a5oeDKKwvrqk4_KuO1z7S1XYmYdu2wxQknRw2DoZoPuo0_jSw8KkWikwZ4mzk9BYLnxLMi18Zy1JWrMRnJfqjfdMbI5isHn1UtcZM5xHJYbokG3JDGioqsXftV-_SV9IqYrgx9qPkUZVXzWbN9EyFHQijDdxsoTadYfEAciV9s5XVoM6G0CbKAeUAj2BwWAAdIN5KHymtlteIg4Hags3T0E06LDrv0gwDXj_2PY4b7Sm-gnkU1cPLl43AnIRMLekSiLTDVuACbyIcp92s4Nk15CrBrYATVvFSitV-S3jFDBboIDt-V-EfdkKkRQ8LN53Cl87NCy31rl_uKHVhEBO0WNzZRFcOGK91w8iWBjV3OrhpvYgy0aPJxWZI_TsGVTIL8TRDvSiAEy-7b1ar7zjy4LXfGtoRj9EzHDGQNsFG5PwpAtflEU-NnBjaLEt0F6YIgpIsLohU.hA0RKmRnSV1JJa6-AvcQyw
+###
+
+# Transaction collection
+GET https://cse341-project-ctd6.onrender.com/transactions
+###
+
+POST https://cse341-project-ctd6.onrender.com/transactions
+Content-Type: application/json
+
+{
+  "account_id": "898989",
+  "transaction_count": 1,
+  "bucket_start_date": "1962-10-13T17:14:27.000Z",
+  "bucket_end_date": "1997-10-13T17:14:27.000Z",
+  "transactions": [
+    {
+      "date": "1969-10-13T17:14:27.000Z",
+      "amount": 1000,
+      "transaction_code": "buy",
+      "symbol": "aapl",
+      "price": "100.0",
+      "total": "100000.0"
+    }
+  ]
+}
+###
+
+GET https://cse341-project-ctd6.onrender.com/transactions/67ff827dec72ac835aa4a26d
+###
+
+PUT https://cse341-project-ctd6.onrender.com/transactions/67ff827dec72ac835aa4a26d
+Content-Type: application/json
+
+{
+  "account_id": 898989,
+  "transaction_count": 1,
+  "bucket_start_date": "1962-10-13T17:14:27.000Z",
+  "bucket_end_date": "1997-10-13T17:14:27.000Z",
+  "transactions": [
+    {
+      "date": "1969-10-13T17:14:27.000Z",
+      "amount": 1000,
+      "transaction_code": "buy",
+      "symbol": "aapl",
+      "price": "200.0",
+      "total": "200000.0"
+    }
+  ]
+}
+###
+
+DELETE https://cse341-project-ctd6.onrender.com/transactions/67ff827dec72ac835aa4a26d
+###
+
+# States Collection
+GET https://cse341-project-ctd6.onrender.com/state
+###
+
+POST https://cse341-project-ctd6.onrender.com/states
+Content-Type: application/json
+
+{
+  "isoCode": "CA",
+  "name": "Canada"
+}
+###
+
+GET https://cse341-project-ctd6.onrender.com/states/67ff82ecec72ac835aa4a268
+###
+
+PUT https://cse341-project-ctd6.onrender.com/states/67ff82ecec72ac835aa4a26e
+Content-Type: application/json
+
+{
+  "isoCode": "CN",
+  "name": "Canada"
+}
+###
+
+DELETE https://cse341-project-ctd6.onrender.com/states/67ff82ecec72ac835aa4a26e
+###
+
+
+# Accounts Collection
+GET https://cse341-project-ctd6.onrender.com/accounts
+###
+
+POST https://cse341-project-ctd6.onrender.com/accounts
+Content-Type: application/json
+
+{
+  "account_id": 898989,
+  "limit": 9000,
+  "products": [
+    "Brokerage",
+    "CurrencyService",
+    "Derivatives",
+    "InvestmentFund",
+    "Commodity",
+    "InvestmentStock"
+  ]
+}
+###
+
+GET https://cse341-project-ctd6.onrender.com/accounts/67ff8344ec72ac835aa4a26f
+###
+
+PUT https://cse341-project-ctd6.onrender.com/accounts/67ff8344ec72ac835aa4a26f
+Content-Type: application/json
+
+{
+  "account_id": 898989,
+  "limit": 9000,
+  "products": [
+    "Brokerage",
+    "CurrencyService",
+    "Derivatives"
+  ]
+}
+###
+
+DELETE https://cse341-project-ctd6.onrender.com/accounts/67ff8344ec72ac835aa4a26f
+###
+
+# Customer Collection
+GET https://cse341-project-ctd6.onrender.com/customers
+###
+
+POST https://cse341-project-ctd6.onrender.com/customers
+Content-Type: application/json
+
+{
+  "username": "blessedmagnificient",
+  "name": "Blessed Magnificient",
+  "address": "1 Oak Close, Ashbridge, OH 10232",
+  "birthdate": "1998-10-13T17:14:27.000Z",
+  "email": "blessed@example.com",
+  "accounts": [
+    898989
+  ],
+  "tier_and_details": {
+    "69f8b6a3c39c42edb540499ee2651b75": {
+      "tier": "Bronze",
+      "benefits": [
+        "dedicated account representative",
+        "airline lounge access"
+      ],
+      "active": true,
+      "id": "69f8b6a3c39c42edb540499ee2651b75"
+    }
+  }
+}
+###
+
+GET https://cse341-project-ctd6.onrender.com/customers/67ff839aec72ac835aa4a270
+###
+
+PUT https://cse341-project-ctd6.onrender.com/customers/67ff839aec72ac835aa4a270
+Content-Type: application/json
+
+{
+  "username": "blessedmagnificient",
+  "name": "Blessed Magnificient",
+  "address": "1 Oak Close, Ashbridge, OH 10232",
+  "birthdate": "1998-10-13T17:14:27.000Z",
+  "email": "blessed@example.com",
+  "accounts": [
+    898989
+  ],
+  "tier_and_details": {
+    "69f8b6a3c39c42edb540499ee2651b75": {
+      "tier": "Bronze",
+      "benefits": [
+        "dedicated account representative",
+        "airline lounge access"
+      ],
+      "active": false,
+      "id": "69f8b6a3c39c42edb540499ee2651b75"
+    }
+  }
+}
+###
+
+DELETE https://cse341-project-ctd6.onrender.com/customers/67ff839aec72ac835aa4a270
+###
+
+
+
+
+
